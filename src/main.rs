@@ -38,9 +38,10 @@ fn day1() -> io::Result<()> {
   let data: Vec<Vec<f64>> = reader.lines()
                                   .filter_map(Result::ok) // Skip lines that failed to read
                                   .map(|line| {
+                                    let line_nums =
                                     line.split_whitespace() // Split the line by spaces
-                                        .filter_map(|num| num.parse::<f64>().ok()) // Parse each number
-                                        .collect() // Collect into a Vec
+                                        .map(|num| num.parse::<i32>()?);
+
                                   })
                                   .collect();
 
